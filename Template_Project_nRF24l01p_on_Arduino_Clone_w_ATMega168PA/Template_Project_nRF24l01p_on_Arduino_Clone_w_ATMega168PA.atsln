@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Template_Project_nRF24l01p_on_Arduino_Clone_w_ATMega168PA", "Template_Project_nRF24l01p_on_Arduino_Clone_w_ATMega168PA.cproj", "{1B1C56A0-B3BE-4A47-9676-CE9245A1C46E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B1C56A0-B3BE-4A47-9676-CE9245A1C46E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1B1C56A0-B3BE-4A47-9676-CE9245A1C46E}.Debug|AVR.Build.0 = Debug|AVR
+		{1B1C56A0-B3BE-4A47-9676-CE9245A1C46E}.Release|AVR.ActiveCfg = Release|AVR
+		{1B1C56A0-B3BE-4A47-9676-CE9245A1C46E}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

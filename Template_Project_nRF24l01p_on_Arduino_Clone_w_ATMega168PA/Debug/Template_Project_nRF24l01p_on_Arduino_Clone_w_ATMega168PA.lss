@@ -1,0 +1,1635 @@
+
+Template_Project_nRF24l01p_on_Arduino_Clone_w_ATMega168PA.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000011a  00800100  00000726  000007ba  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000726  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000005  0080021a  0080021a  000008d4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000008d4  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 000001d8  00000000  00000000  00000904  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001b00  00000000  00000000  00000adc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000853  00000000  00000000  000025dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000a37  00000000  00000000  00002e2f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000428  00000000  00000000  00003868  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000006e5  00000000  00000000  00003c90  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00001095  00000000  00000000  00004375  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000170  00000000  00000000  0000540a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+uint16_t ADC_u16SampleChannel(TADC_InputChannels xADCInputChannel, uint16_t u16TimeOutCnt)
+{
+	uint16_t u16RetVal = 0xFFFF;
+	uint16_t u16WaitCnt = 0;
+	// set multiplexer to given channel
+	ADMUX &= 0xE0;	//delete current setting
+   0:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__ctors_end>
+   4:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+   8:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+	switch(xADCInputChannel)
+   c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  10:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  14:	0c 94 14 02 	jmp	0x428	; 0x428 <__vector_5>
+	{
+		case ADC_IN_0:
+			// already done
+		break;
+		case ADC_IN_1:
+			ADMUX |= (1<<MUX0);
+  18:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+		break;
+  1c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+		case ADC_IN_2:
+			ADMUX |= (1<<MUX1);
+  20:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  24:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+		break;
+  28:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+		case ADC_IN_3:
+			ADMUX |= (1<<MUX1) | (1<<MUX0);
+  2c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  30:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+		break;
+	}
+	
+	//start conversion
+	ADCSRA |= (1<<ADSC);
+  34:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  38:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  3c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+	
+	//wait for conversion to stop
+	while ((u16WaitCnt < u16TimeOutCnt) & ((ADCSRA & (1<<ADSC)) == (1<<ADSC)))
+  40:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  44:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  48:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  4c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  50:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+
+
+uint16_t ADC_u16SampleChannel(TADC_InputChannels xADCInputChannel, uint16_t u16TimeOutCnt)
+{
+	uint16_t u16RetVal = 0xFFFF;
+	uint16_t u16WaitCnt = 0;
+  54:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+	
+	//start conversion
+	ADCSRA |= (1<<ADSC);
+	
+	//wait for conversion to stop
+	while ((u16WaitCnt < u16TimeOutCnt) & ((ADCSRA & (1<<ADSC)) == (1<<ADSC)))
+  58:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  5c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  60:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  64:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  68:	4c 03       	fmul	r20, r20
+  6a:	50 03       	mulsu	r21, r16
+  6c:	54 03       	mulsu	r21, r20
+  6e:	58 03       	fmul	r21, r16
+  70:	5c 03       	fmul	r21, r20
+  72:	60 03       	mulsu	r22, r16
+  74:	64 03       	mulsu	r22, r20
+
+
+uint16_t ADC_u16SampleChannel(TADC_InputChannels xADCInputChannel, uint16_t u16TimeOutCnt)
+{
+	uint16_t u16RetVal = 0xFFFF;
+	uint16_t u16WaitCnt = 0;
+  76:	68 03       	fmul	r22, r16
+  78:	6c 03       	fmul	r22, r20
+	{
+		u16WaitCnt++;
+	}
+	
+	//read back result if no time out occurred
+	if (u16WaitCnt < u16TimeOutCnt)
+  7a:	70 03       	mulsu	r23, r16
+
+0000007c <__ctors_end>:
+  7c:	11 24       	eor	r1, r1
+  7e:	1f be       	out	0x3f, r1	; 63
+	{
+		u16RetVal = ADCL;
+  80:	cf ef       	ldi	r28, 0xFF	; 255
+  82:	d4 e0       	ldi	r29, 0x04	; 4
+		u16RetVal = u16RetVal + ADCH * 256;
+  84:	de bf       	out	0x3e, r29	; 62
+  86:	cd bf       	out	0x3d, r28	; 61
+
+00000088 <__do_copy_data>:
+  88:	12 e0       	ldi	r17, 0x02	; 2
+  8a:	a0 e0       	ldi	r26, 0x00	; 0
+  8c:	b1 e0       	ldi	r27, 0x01	; 1
+  8e:	e6 e2       	ldi	r30, 0x26	; 38
+  90:	f7 e0       	ldi	r31, 0x07	; 7
+  92:	02 c0       	rjmp	.+4      	; 0x98 <__do_copy_data+0x10>
+}
+
+
+uint16_t ADC_u16SampleChannel(TADC_InputChannels xADCInputChannel, uint16_t u16TimeOutCnt)
+{
+	uint16_t u16RetVal = 0xFFFF;
+  94:	05 90       	lpm	r0, Z+
+  96:	0d 92       	st	X+, r0
+		u16RetVal = ADCL;
+		u16RetVal = u16RetVal + ADCH * 256;
+	}
+	
+	return u16RetVal;
+  98:	aa 31       	cpi	r26, 0x1A	; 26
+  9a:	b1 07       	cpc	r27, r17
+  9c:	d9 f7       	brne	.-10     	; 0x94 <__do_copy_data+0xc>
+
+0000009e <__do_clear_bss>:
+  9e:	22 e0       	ldi	r18, 0x02	; 2
+  a0:	aa e1       	ldi	r26, 0x1A	; 26
+  a2:	b2 e0       	ldi	r27, 0x02	; 2
+  a4:	01 c0       	rjmp	.+2      	; 0xa8 <.do_clear_bss_start>
+
+000000a6 <.do_clear_bss_loop>:
+  a6:	1d 92       	st	X+, r1
+
+000000a8 <.do_clear_bss_start>:
+  a8:	af 31       	cpi	r26, 0x1F	; 31
+  aa:	b2 07       	cpc	r27, r18
+  ac:	e1 f7       	brne	.-8      	; 0xa6 <.do_clear_bss_loop>
+  ae:	0e 94 5d 00 	call	0xba	; 0xba <main>
+  b2:	0c 94 91 03 	jmp	0x722	; 0x722 <_exit>
+
+000000b6 <__bad_interrupt>:
+  b6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000ba <main>:
+
+#define PING_Request	1
+#define PING_Response	16
+
+int main(void)
+{
+  ba:	cf 93       	push	r28
+  bc:	df 93       	push	r29
+  be:	cd b7       	in	r28, 0x3d	; 61
+  c0:	de b7       	in	r29, 0x3e	; 62
+  c2:	6a 97       	sbiw	r28, 0x1a	; 26
+  c4:	0f b6       	in	r0, 0x3f	; 63
+  c6:	f8 94       	cli
+  c8:	de bf       	out	0x3e, r29	; 62
+  ca:	0f be       	out	0x3f, r0	; 63
+  cc:	cd bf       	out	0x3d, r28	; 61
+
+	uint8_t u08Cnt;
+	uint8_t u08MirfReg;
+	uint8_t au08MirfBuffer[mirf_PAYLOAD];
+	
+	Port_init();
+  ce:	0e 94 ac 02 	call	0x558	; 0x558 <Port_init>
+	BaseTmr_Init();
+  d2:	0e 94 ab 01 	call	0x356	; 0x356 <BaseTmr_Init>
+	UART_init();
+  d6:	0e 94 e7 02 	call	0x5ce	; 0x5ce <UART_init>
+	//ADC_init(ADC_RM_Poll);
+
+	
+	// Initialize AVR for use with mirf
+	mirf_init();
+  da:	0e 94 e1 01 	call	0x3c2	; 0x3c2 <mirf_init>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  de:	2f ef       	ldi	r18, 0xFF	; 255
+  e0:	80 e7       	ldi	r24, 0x70	; 112
+  e2:	92 e0       	ldi	r25, 0x02	; 2
+  e4:	21 50       	subi	r18, 0x01	; 1
+  e6:	80 40       	sbci	r24, 0x00	; 0
+  e8:	90 40       	sbci	r25, 0x00	; 0
+  ea:	e1 f7       	brne	.-8      	; 0xe4 <main+0x2a>
+  ec:	00 c0       	rjmp	.+0      	; 0xee <main+0x34>
+  ee:	00 00       	nop
+	// Wait for mirf to come up
+	_delay_ms(50);
+	// Activate interrupts
+	sei();
+  f0:	78 94       	sei
+	// Configure mirf
+	mirf_config();
+  f2:	0e 94 04 02 	call	0x408	; 0x408 <mirf_config>
+	
+	// UART example
+	UART_puts("nrf24l01p_Test\r\n");
+  f6:	80 e0       	ldi	r24, 0x00	; 0
+  f8:	91 e0       	ldi	r25, 0x01	; 1
+  fa:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+	
+	
+	mirf_read_register(CONFIG,&u08MirfReg,1);
+  fe:	41 e0       	ldi	r20, 0x01	; 1
+ 100:	be 01       	movw	r22, r28
+ 102:	6a 5f       	subi	r22, 0xFA	; 250
+ 104:	7f 4f       	sbci	r23, 0xFF	; 255
+ 106:	80 e0       	ldi	r24, 0x00	; 0
+ 108:	0e 94 75 02 	call	0x4ea	; 0x4ea <mirf_read_register>
+	if (u08MirfReg == 75)
+ 10c:	8e 81       	ldd	r24, Y+6	; 0x06
+ 10e:	8b 34       	cpi	r24, 0x4B	; 75
+ 110:	29 f4       	brne	.+10     	; 0x11c <main+0x62>
+	{
+		UART_puts("Module correctly configured\r\n");
+ 112:	81 e1       	ldi	r24, 0x11	; 17
+ 114:	91 e0       	ldi	r25, 0x01	; 1
+ 116:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+ 11a:	04 c0       	rjmp	.+8      	; 0x124 <main+0x6a>
+	}
+	else
+	{
+		UART_puts("Module not correctly configured\r\n");	
+ 11c:	8f e2       	ldi	r24, 0x2F	; 47
+ 11e:	91 e0       	ldi	r25, 0x01	; 1
+ 120:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+	}
+	
+	//read back rx/tx addresses
+	UART_puts("Module Configuration\r\n");
+ 124:	81 e5       	ldi	r24, 0x51	; 81
+ 126:	91 e0       	ldi	r25, 0x01	; 1
+ 128:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+
+	UART_puts("TX Adress: ");
+ 12c:	88 e6       	ldi	r24, 0x68	; 104
+ 12e:	91 e0       	ldi	r25, 0x01	; 1
+ 130:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+	mirf_read_register(TX_ADDR,&au08MirfBuffer[0],5);
+ 134:	5e 01       	movw	r10, r28
+ 136:	e7 e0       	ldi	r30, 0x07	; 7
+ 138:	ae 0e       	add	r10, r30
+ 13a:	b1 1c       	adc	r11, r1
+ 13c:	45 e0       	ldi	r20, 0x05	; 5
+ 13e:	b5 01       	movw	r22, r10
+ 140:	80 e1       	ldi	r24, 0x10	; 16
+ 142:	0e 94 75 02 	call	0x4ea	; 0x4ea <mirf_read_register>
+ 146:	ca 2c       	mov	r12, r10
+ 148:	db 2c       	mov	r13, r11
+ 14a:	75 01       	movw	r14, r10
+ 14c:	8e 01       	movw	r16, r28
+ 14e:	04 5f       	subi	r16, 0xF4	; 244
+ 150:	1f 4f       	sbci	r17, 0xFF	; 255
+	for(uint8_t u08Idx=0;u08Idx<5;u08Idx++)
+	{
+		UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+ 152:	f5 01       	movw	r30, r10
+ 154:	81 91       	ld	r24, Z+
+ 156:	5f 01       	movw	r10, r30
+ 158:	0e 94 0f 03 	call	0x61e	; 0x61e <UART_Tx_uint08>
+		UART_putc(' ');
+ 15c:	80 e2       	ldi	r24, 0x20	; 32
+ 15e:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+	//read back rx/tx addresses
+	UART_puts("Module Configuration\r\n");
+
+	UART_puts("TX Adress: ");
+	mirf_read_register(TX_ADDR,&au08MirfBuffer[0],5);
+	for(uint8_t u08Idx=0;u08Idx<5;u08Idx++)
+ 162:	a0 16       	cp	r10, r16
+ 164:	b1 06       	cpc	r11, r17
+ 166:	a9 f7       	brne	.-22     	; 0x152 <main+0x98>
+	{
+		UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+		UART_putc(' ');
+	}
+	UART_puts("\r\n");
+ 168:	83 ed       	ldi	r24, 0xD3	; 211
+ 16a:	91 e0       	ldi	r25, 0x01	; 1
+ 16c:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+
+	UART_puts("RX Adress (Pipe 0): ");
+ 170:	84 e7       	ldi	r24, 0x74	; 116
+ 172:	91 e0       	ldi	r25, 0x01	; 1
+ 174:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+	mirf_read_register(RX_ADDR_P0,&au08MirfBuffer[0],5);
+ 178:	45 e0       	ldi	r20, 0x05	; 5
+ 17a:	be 01       	movw	r22, r28
+ 17c:	69 5f       	subi	r22, 0xF9	; 249
+ 17e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 180:	8a e0       	ldi	r24, 0x0A	; 10
+ 182:	0e 94 75 02 	call	0x4ea	; 0x4ea <mirf_read_register>
+ 186:	ac 2c       	mov	r10, r12
+ 188:	bd 2c       	mov	r11, r13
+	for(uint8_t u08Idx=0;u08Idx<5;u08Idx++)
+	{
+		UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+ 18a:	f5 01       	movw	r30, r10
+ 18c:	81 91       	ld	r24, Z+
+ 18e:	5f 01       	movw	r10, r30
+ 190:	0e 94 0f 03 	call	0x61e	; 0x61e <UART_Tx_uint08>
+		UART_putc(' ');
+ 194:	80 e2       	ldi	r24, 0x20	; 32
+ 196:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+	}
+	UART_puts("\r\n");
+
+	UART_puts("RX Adress (Pipe 0): ");
+	mirf_read_register(RX_ADDR_P0,&au08MirfBuffer[0],5);
+	for(uint8_t u08Idx=0;u08Idx<5;u08Idx++)
+ 19a:	0a 15       	cp	r16, r10
+ 19c:	1b 05       	cpc	r17, r11
+ 19e:	a9 f7       	brne	.-22     	; 0x18a <main+0xd0>
+	{
+		UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+		UART_putc(' ');
+	}
+	UART_puts("\r\n");
+ 1a0:	83 ed       	ldi	r24, 0xD3	; 211
+ 1a2:	91 e0       	ldi	r25, 0x01	; 1
+ 1a4:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+
+
+	UART_puts("RX Adress (Pipe 1): ");
+ 1a8:	89 e8       	ldi	r24, 0x89	; 137
+ 1aa:	91 e0       	ldi	r25, 0x01	; 1
+ 1ac:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+	mirf_read_register(RX_ADDR_P1,&au08MirfBuffer[0],5);
+ 1b0:	45 e0       	ldi	r20, 0x05	; 5
+ 1b2:	be 01       	movw	r22, r28
+ 1b4:	69 5f       	subi	r22, 0xF9	; 249
+ 1b6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 1b8:	8b e0       	ldi	r24, 0x0B	; 11
+ 1ba:	0e 94 75 02 	call	0x4ea	; 0x4ea <mirf_read_register>
+ 1be:	ac 2c       	mov	r10, r12
+ 1c0:	bd 2c       	mov	r11, r13
+	for(uint8_t u08Idx=0;u08Idx<5;u08Idx++)
+	{
+		UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+ 1c2:	f5 01       	movw	r30, r10
+ 1c4:	81 91       	ld	r24, Z+
+ 1c6:	5f 01       	movw	r10, r30
+ 1c8:	0e 94 0f 03 	call	0x61e	; 0x61e <UART_Tx_uint08>
+		UART_putc(' ');
+ 1cc:	80 e2       	ldi	r24, 0x20	; 32
+ 1ce:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+	UART_puts("\r\n");
+
+
+	UART_puts("RX Adress (Pipe 1): ");
+	mirf_read_register(RX_ADDR_P1,&au08MirfBuffer[0],5);
+	for(uint8_t u08Idx=0;u08Idx<5;u08Idx++)
+ 1d2:	0a 15       	cp	r16, r10
+ 1d4:	1b 05       	cpc	r17, r11
+ 1d6:	a9 f7       	brne	.-22     	; 0x1c2 <main+0x108>
+	{
+		UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+		UART_putc(' ');
+	}
+	UART_puts("\r\n");
+ 1d8:	83 ed       	ldi	r24, 0xD3	; 211
+ 1da:	91 e0       	ldi	r25, 0x01	; 1
+ 1dc:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+
+
+	u08Toggle=10;
+ 1e0:	8a e0       	ldi	r24, 0x0A	; 10
+ 1e2:	8d 83       	std	Y+5, r24	; 0x05
+ 1e4:	87 01       	movw	r16, r14
+ 1e6:	0c 5e       	subi	r16, 0xEC	; 236
+ 1e8:	1f 4f       	sbci	r17, 0xFF	; 255
+	while(1)
+	{
+		BaseTmr_WaitForNextTimeSlot_10ms();
+		if (u08Toggle==10)
+		{
+			u08Toggle=0;
+ 1ea:	ec 2c       	mov	r14, r12
+ 1ec:	fd 2c       	mov	r15, r13
+				{
+					UART_puts("Sending Ping Request\r\n");
+					// get current timer tick
+					xExtractU32BytesUnion.u32Value = BaseTmr_u32GetTimerTicks();
+					// fill tx buffer with ping request
+					au08MirfBuffer[0] = PING_Request;
+ 1ee:	dd 24       	eor	r13, r13
+ 1f0:	d3 94       	inc	r13
+				// check if payload contains a ping request
+				if (au08MirfBuffer[0] == PING_Request)
+				{
+					UART_puts("Received Ping request.\r\n");
+					//prepare ping response
+					au08MirfBuffer[0] = PING_Response;
+ 1f2:	68 94       	set
+ 1f4:	cc 24       	eor	r12, r12
+ 1f6:	c4 f8       	bld	r12, 4
+
+	u08Toggle=10;
+
+	while(1)
+	{
+		BaseTmr_WaitForNextTimeSlot_10ms();
+ 1f8:	0e 94 be 01 	call	0x37c	; 0x37c <BaseTmr_WaitForNextTimeSlot_10ms>
+		if (u08Toggle==10)
+ 1fc:	8d 81       	ldd	r24, Y+5	; 0x05
+ 1fe:	8a 30       	cpi	r24, 0x0A	; 10
+ 200:	09 f0       	breq	.+2      	; 0x204 <main+0x14a>
+ 202:	a5 c0       	rjmp	.+330    	; 0x34e <main+0x294>
+		{
+			u08Toggle=0;
+ 204:	1d 82       	std	Y+5, r1	; 0x05
+ 206:	ee 2d       	mov	r30, r14
+ 208:	ff 2d       	mov	r31, r15
+			
+		*/	
+			// clear buffer
+			for (uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+			{
+				au08MirfBuffer[u08Idx] = 0;
+ 20a:	11 92       	st	Z+, r1
+			UART_Tx_uint08(u08MirfReg);
+			UART_puts("\r\n");
+			
+		*/	
+			// clear buffer
+			for (uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+ 20c:	e0 17       	cp	r30, r16
+ 20e:	f1 07       	cpc	r31, r17
+ 210:	e1 f7       	brne	.-8      	; 0x20a <main+0x150>
+			}
+	
+			//check for new data
+// 			mirf_read_register(STATUS,&u08MirfReg,1);
+// 			if (u08MirfReg & 0x40)
+			if(mirf_data_ready())
+ 212:	0e 94 ea 01 	call	0x3d4	; 0x3d4 <mirf_data_ready>
+ 216:	88 23       	and	r24, r24
+ 218:	09 f4       	brne	.+2      	; 0x21c <main+0x162>
+ 21a:	73 c0       	rjmp	.+230    	; 0x302 <main+0x248>
+			{
+				//data available
+				mirf_get_data(&au08MirfBuffer[0]);
+ 21c:	ce 01       	movw	r24, r28
+ 21e:	07 96       	adiw	r24, 0x07	; 7
+ 220:	0e 94 61 02 	call	0x4c2	; 0x4c2 <mirf_get_data>
+				UART_puts("Data received:\r\n");
+ 224:	8e e9       	ldi	r24, 0x9E	; 158
+ 226:	91 e0       	ldi	r25, 0x01	; 1
+ 228:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+				UART_puts("Raw: ");
+ 22c:	8f ea       	ldi	r24, 0xAF	; 175
+ 22e:	91 e0       	ldi	r25, 0x01	; 1
+ 230:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+ 234:	ae 2c       	mov	r10, r14
+ 236:	bf 2c       	mov	r11, r15
+				for(uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+				{
+					UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+ 238:	f5 01       	movw	r30, r10
+ 23a:	81 91       	ld	r24, Z+
+ 23c:	5f 01       	movw	r10, r30
+ 23e:	0e 94 0f 03 	call	0x61e	; 0x61e <UART_Tx_uint08>
+					UART_putc(' ');
+ 242:	80 e2       	ldi	r24, 0x20	; 32
+ 244:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+			{
+				//data available
+				mirf_get_data(&au08MirfBuffer[0]);
+				UART_puts("Data received:\r\n");
+				UART_puts("Raw: ");
+				for(uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+ 248:	0a 15       	cp	r16, r10
+ 24a:	1b 05       	cpc	r17, r11
+ 24c:	a9 f7       	brne	.-22     	; 0x238 <main+0x17e>
+				{
+					UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+					UART_putc(' ');
+				}
+				UART_puts("\r\n");	
+ 24e:	83 ed       	ldi	r24, 0xD3	; 211
+ 250:	91 e0       	ldi	r25, 0x01	; 1
+ 252:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+				
+				UART_puts("ASCII: ");
+ 256:	85 eb       	ldi	r24, 0xB5	; 181
+ 258:	91 e0       	ldi	r25, 0x01	; 1
+ 25a:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+ 25e:	ae 2c       	mov	r10, r14
+ 260:	bf 2c       	mov	r11, r15
+				for(uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+				{
+					UART_putc(au08MirfBuffer[u08Idx]);
+ 262:	f5 01       	movw	r30, r10
+ 264:	81 91       	ld	r24, Z+
+ 266:	5f 01       	movw	r10, r30
+ 268:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+					UART_putc(' ');
+ 26c:	80 e2       	ldi	r24, 0x20	; 32
+ 26e:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+					UART_putc(' ');
+				}
+				UART_puts("\r\n");	
+				
+				UART_puts("ASCII: ");
+				for(uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+ 272:	0a 15       	cp	r16, r10
+ 274:	1b 05       	cpc	r17, r11
+ 276:	a9 f7       	brne	.-22     	; 0x262 <main+0x1a8>
+				{
+					UART_putc(au08MirfBuffer[u08Idx]);
+					UART_putc(' ');
+				}
+				UART_puts("\r\n");
+ 278:	83 ed       	ldi	r24, 0xD3	; 211
+ 27a:	91 e0       	ldi	r25, 0x01	; 1
+ 27c:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+				
+				
+				// check if payload contains a ping request
+				if (au08MirfBuffer[0] == PING_Request)
+ 280:	8f 81       	ldd	r24, Y+7	; 0x07
+ 282:	81 30       	cpi	r24, 0x01	; 1
+ 284:	f1 f5       	brne	.+124    	; 0x302 <main+0x248>
+				{
+					UART_puts("Received Ping request.\r\n");
+ 286:	8d eb       	ldi	r24, 0xBD	; 189
+ 288:	91 e0       	ldi	r25, 0x01	; 1
+ 28a:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+					//prepare ping response
+					au08MirfBuffer[0] = PING_Response;
+ 28e:	cf 82       	std	Y+7, r12	; 0x07
+					// get current timer tick
+					xExtractU32BytesUnion.u32Value = BaseTmr_u32GetTimerTicks();
+ 290:	0e 94 d8 01 	call	0x3b0	; 0x3b0 <BaseTmr_u32GetTimerTicks>
+ 294:	69 83       	std	Y+1, r22	; 0x01
+ 296:	7a 83       	std	Y+2, r23	; 0x02
+ 298:	8b 83       	std	Y+3, r24	; 0x03
+ 29a:	9c 83       	std	Y+4, r25	; 0x04
+					// fill tx buffer with timer value
+					au08MirfBuffer[5] = xExtractU32BytesUnion.u08Bytes.u08Byte0;
+ 29c:	89 81       	ldd	r24, Y+1	; 0x01
+ 29e:	8c 87       	std	Y+12, r24	; 0x0c
+					au08MirfBuffer[6] = xExtractU32BytesUnion.u08Bytes.u08Byte1;
+ 2a0:	8a 81       	ldd	r24, Y+2	; 0x02
+ 2a2:	8d 87       	std	Y+13, r24	; 0x0d
+					au08MirfBuffer[7] = xExtractU32BytesUnion.u08Bytes.u08Byte2;
+ 2a4:	8b 81       	ldd	r24, Y+3	; 0x03
+ 2a6:	8e 87       	std	Y+14, r24	; 0x0e
+					au08MirfBuffer[8] = xExtractU32BytesUnion.u08Bytes.u08Byte3;
+ 2a8:	8c 81       	ldd	r24, Y+4	; 0x04
+ 2aa:	8f 87       	std	Y+15, r24	; 0x0f
+ 2ac:	ff ef       	ldi	r31, 0xFF	; 255
+ 2ae:	20 e7       	ldi	r18, 0x70	; 112
+ 2b0:	82 e0       	ldi	r24, 0x02	; 2
+ 2b2:	f1 50       	subi	r31, 0x01	; 1
+ 2b4:	20 40       	sbci	r18, 0x00	; 0
+ 2b6:	80 40       	sbci	r24, 0x00	; 0
+ 2b8:	e1 f7       	brne	.-8      	; 0x2b2 <main+0x1f8>
+ 2ba:	00 c0       	rjmp	.+0      	; 0x2bc <main+0x202>
+ 2bc:	00 00       	nop
+					//sending ping response
+					_delay_ms(50);
+					mirf_send((uint8_t*)&au08MirfBuffer[0],mirf_PAYLOAD);
+ 2be:	64 e1       	ldi	r22, 0x14	; 20
+ 2c0:	ce 01       	movw	r24, r28
+ 2c2:	07 96       	adiw	r24, 0x07	; 7
+ 2c4:	0e 94 88 02 	call	0x510	; 0x510 <mirf_send>
+					while (PIND & (1<<PIND2))
+ 2c8:	4a 99       	sbic	0x09, 2	; 9
+ 2ca:	fe cf       	rjmp	.-4      	; 0x2c8 <main+0x20e>
+					{
+						// wait for interrupt
+					}
+					mirf_poll_for_irq();
+ 2cc:	0e 94 4b 02 	call	0x496	; 0x496 <mirf_poll_for_irq>
+					UART_puts("Ping response sent with following message\r\n");
+ 2d0:	86 ed       	ldi	r24, 0xD6	; 214
+ 2d2:	91 e0       	ldi	r25, 0x01	; 1
+ 2d4:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+ 2d8:	ae 2c       	mov	r10, r14
+ 2da:	bf 2c       	mov	r11, r15
+					for(uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+					{
+						UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+ 2dc:	f5 01       	movw	r30, r10
+ 2de:	81 91       	ld	r24, Z+
+ 2e0:	5f 01       	movw	r10, r30
+ 2e2:	0e 94 0f 03 	call	0x61e	; 0x61e <UART_Tx_uint08>
+						UART_putc(' ');
+ 2e6:	80 e2       	ldi	r24, 0x20	; 32
+ 2e8:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+					{
+						// wait for interrupt
+					}
+					mirf_poll_for_irq();
+					UART_puts("Ping response sent with following message\r\n");
+					for(uint8_t u08Idx=0;u08Idx<mirf_PAYLOAD;u08Idx++)
+ 2ec:	0a 15       	cp	r16, r10
+ 2ee:	1b 05       	cpc	r17, r11
+ 2f0:	a9 f7       	brne	.-22     	; 0x2dc <main+0x222>
+					{
+						UART_Tx_uint08(au08MirfBuffer[u08Idx]);
+						UART_putc(' ');
+					}
+					UART_puts("\r\n");
+ 2f2:	83 ed       	ldi	r24, 0xD3	; 211
+ 2f4:	91 e0       	ldi	r25, 0x01	; 1
+ 2f6:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+					UART_puts("\r\n");
+ 2fa:	83 ed       	ldi	r24, 0xD3	; 211
+ 2fc:	91 e0       	ldi	r25, 0x01	; 1
+ 2fe:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+			
+			
+			/* ******************************************************* */
+			/* UART Rx Test */
+			uint16_t u16RxData;
+			u16RxData = UART_Rx();
+ 302:	0e 94 80 03 	call	0x700	; 0x700 <UART_Rx>
+			if (u16RxData != 0xFFFF)
+			{
+				if (u16RxData == '*')
+ 306:	8a 97       	sbiw	r24, 0x2a	; 42
+ 308:	11 f5       	brne	.+68     	; 0x34e <main+0x294>
+				{
+					UART_puts("Sending Ping Request\r\n");
+ 30a:	82 e0       	ldi	r24, 0x02	; 2
+ 30c:	92 e0       	ldi	r25, 0x02	; 2
+ 30e:	0e 94 00 03 	call	0x600	; 0x600 <UART_puts>
+					// get current timer tick
+					xExtractU32BytesUnion.u32Value = BaseTmr_u32GetTimerTicks();
+ 312:	0e 94 d8 01 	call	0x3b0	; 0x3b0 <BaseTmr_u32GetTimerTicks>
+ 316:	69 83       	std	Y+1, r22	; 0x01
+ 318:	7a 83       	std	Y+2, r23	; 0x02
+ 31a:	8b 83       	std	Y+3, r24	; 0x03
+ 31c:	9c 83       	std	Y+4, r25	; 0x04
+					// fill tx buffer with ping request
+					au08MirfBuffer[0] = PING_Request;
+ 31e:	df 82       	std	Y+7, r13	; 0x07
+					// fill tx buffer with timer value
+					au08MirfBuffer[1] = xExtractU32BytesUnion.u08Bytes.u08Byte0;
+ 320:	89 81       	ldd	r24, Y+1	; 0x01
+ 322:	88 87       	std	Y+8, r24	; 0x08
+					au08MirfBuffer[2] = xExtractU32BytesUnion.u08Bytes.u08Byte1;
+ 324:	8a 81       	ldd	r24, Y+2	; 0x02
+ 326:	89 87       	std	Y+9, r24	; 0x09
+					au08MirfBuffer[3] = xExtractU32BytesUnion.u08Bytes.u08Byte2;
+ 328:	8b 81       	ldd	r24, Y+3	; 0x03
+ 32a:	8a 87       	std	Y+10, r24	; 0x0a
+					au08MirfBuffer[4] = xExtractU32BytesUnion.u08Bytes.u08Byte3;
+ 32c:	8c 81       	ldd	r24, Y+4	; 0x04
+ 32e:	8b 87       	std	Y+11, r24	; 0x0b
+ 330:	fe 01       	movw	r30, r28
+ 332:	3c 96       	adiw	r30, 0x0c	; 12
+					//clear remaining buffer
+					for(uint8_t u08Idx=5;u08Idx<mirf_PAYLOAD;u08Idx++)
+					{
+						au08MirfBuffer[u08Idx]  = 0;
+ 334:	11 92       	st	Z+, r1
+					au08MirfBuffer[1] = xExtractU32BytesUnion.u08Bytes.u08Byte0;
+					au08MirfBuffer[2] = xExtractU32BytesUnion.u08Bytes.u08Byte1;
+					au08MirfBuffer[3] = xExtractU32BytesUnion.u08Bytes.u08Byte2;
+					au08MirfBuffer[4] = xExtractU32BytesUnion.u08Bytes.u08Byte3;
+					//clear remaining buffer
+					for(uint8_t u08Idx=5;u08Idx<mirf_PAYLOAD;u08Idx++)
+ 336:	0e 17       	cp	r16, r30
+ 338:	1f 07       	cpc	r17, r31
+ 33a:	e1 f7       	brne	.-8      	; 0x334 <main+0x27a>
+					{
+						au08MirfBuffer[u08Idx]  = 0;
+					}
+					//sending ping
+					mirf_send((uint8_t*)&au08MirfBuffer[0],mirf_PAYLOAD);
+ 33c:	64 e1       	ldi	r22, 0x14	; 20
+ 33e:	ce 01       	movw	r24, r28
+ 340:	07 96       	adiw	r24, 0x07	; 7
+ 342:	0e 94 88 02 	call	0x510	; 0x510 <mirf_send>
+					while (PIND & (1<<PIND2))
+ 346:	4a 99       	sbic	0x09, 2	; 9
+ 348:	fe cf       	rjmp	.-4      	; 0x346 <main+0x28c>
+					{
+						// wait for interrupt
+					}
+					mirf_poll_for_irq();			
+ 34a:	0e 94 4b 02 	call	0x496	; 0x496 <mirf_poll_for_irq>
+				UART_puts("\r\n");
+*/
+			}
+			
+		}
+		u08Toggle++;
+ 34e:	8d 81       	ldd	r24, Y+5	; 0x05
+ 350:	8f 5f       	subi	r24, 0xFF	; 255
+ 352:	8d 83       	std	Y+5, r24	; 0x05
+	}
+ 354:	51 cf       	rjmp	.-350    	; 0x1f8 <main+0x13e>
+
+00000356 <BaseTmr_Init>:
+	//set prescaler to 1024
+	//cs02=1 CS01=0 CS00=1
+	//normal operation on port pins
+	//no interrupts
+	#if defined(_AVR_IOM88_H_) || defined(__AVR_ATmega168PA__)
+		TIMSK0 = 0;
+ 356:	10 92 6e 00 	sts	0x006E, r1
+		TIFR0 = 0;
+ 35a:	15 ba       	out	0x15, r1	; 21
+		TCCR0A = (1<<WGM01) | (0<<WGM00);
+ 35c:	82 e0       	ldi	r24, 0x02	; 2
+ 35e:	84 bd       	out	0x24, r24	; 36
+		TCCR0B = (0<<WGM02) | (0<<CS02) | (1<<CS01) | (1<<CS00);
+ 360:	83 e0       	ldi	r24, 0x03	; 3
+ 362:	85 bd       	out	0x25, r24	; 37
+		
+		//set compare and timer count register
+		OCR0A = 250;	 // equals 1ms @ 16MHz
+ 364:	8a ef       	ldi	r24, 0xFA	; 250
+ 366:	87 bd       	out	0x27, r24	; 39
+		TCNT0 = 0;
+ 368:	16 bc       	out	0x26, r1	; 38
+		TCNT = 0;	
+				
+	#endif
+	
+	// clear timer ticks
+	BaseTmr_u32TimerTicks=0;
+ 36a:	10 92 1a 02 	sts	0x021A, r1
+ 36e:	10 92 1b 02 	sts	0x021B, r1
+ 372:	10 92 1c 02 	sts	0x021C, r1
+ 376:	10 92 1d 02 	sts	0x021D, r1
+ 37a:	08 95       	ret
+
+0000037c <BaseTmr_WaitForNextTimeSlot_10ms>:
+}
+
+
+
+void BaseTmr_WaitForNextTimeSlot_10ms(void)
+{
+ 37c:	8a e0       	ldi	r24, 0x0A	; 10
+		#if defined(__AVR_ATmega32__)
+			TIFR |= (1<<OCF0);
+			while((TIFR & (1<<OCF0)) != (1<<OCF0));
+		#endif
+		#if defined(__AVR_ATmega168PA__)
+			TIFR0 |= (1<<OCF0A);
+ 37e:	a9 9a       	sbi	0x15, 1	; 21
+			while((TIFR0 & (1<<OCF0A)) != (1<<OCF0A));
+ 380:	a9 9b       	sbis	0x15, 1	; 21
+ 382:	fe cf       	rjmp	.-4      	; 0x380 <BaseTmr_WaitForNextTimeSlot_10ms+0x4>
+ 384:	81 50       	subi	r24, 0x01	; 1
+void BaseTmr_WaitForNextTimeSlot_10ms(void)
+{
+	uint8_t u08Cnt;
+	
+	//wait until 10ms are over
+	for(u08Cnt=0;u08Cnt<10;u08Cnt++)
+ 386:	d9 f7       	brne	.-10     	; 0x37e <BaseTmr_WaitForNextTimeSlot_10ms+0x2>
+			while((TIFR0 & (1<<OCF0A)) != (1<<OCF0A));
+		#endif
+		
+	}
+	// add 10ms
+	BaseTmr_u32TimerTicks+=10;
+ 388:	80 91 1a 02 	lds	r24, 0x021A
+ 38c:	90 91 1b 02 	lds	r25, 0x021B
+ 390:	a0 91 1c 02 	lds	r26, 0x021C
+ 394:	b0 91 1d 02 	lds	r27, 0x021D
+ 398:	0a 96       	adiw	r24, 0x0a	; 10
+ 39a:	a1 1d       	adc	r26, r1
+ 39c:	b1 1d       	adc	r27, r1
+ 39e:	80 93 1a 02 	sts	0x021A, r24
+ 3a2:	90 93 1b 02 	sts	0x021B, r25
+ 3a6:	a0 93 1c 02 	sts	0x021C, r26
+ 3aa:	b0 93 1d 02 	sts	0x021D, r27
+ 3ae:	08 95       	ret
+
+000003b0 <BaseTmr_u32GetTimerTicks>:
+}
+
+uint32_t BaseTmr_u32GetTimerTicks(void)
+{
+	return BaseTmr_u32TimerTicks;
+ 3b0:	60 91 1a 02 	lds	r22, 0x021A
+ 3b4:	70 91 1b 02 	lds	r23, 0x021B
+ 3b8:	80 91 1c 02 	lds	r24, 0x021C
+ 3bc:	90 91 1d 02 	lds	r25, 0x021D
+ 3c0:	08 95       	ret
+
+000003c2 <mirf_init>:
+void mirf_init() 
+// Initializes pins ans interrupt to communicate with the MiRF module
+// Should be called in the early initializing phase at startup.
+{
+    // Define CSN and CE as Output and set them to default
+    DDRB |= ((1<<CSN)|(1<<CE));
+ 3c2:	84 b1       	in	r24, 0x04	; 4
+ 3c4:	83 60       	ori	r24, 0x03	; 3
+ 3c6:	84 b9       	out	0x04, r24	; 4
+    mirf_CE_lo;
+ 3c8:	28 98       	cbi	0x05, 0	; 5
+    mirf_CSN_hi;
+ 3ca:	29 9a       	sbi	0x05, 1	; 5
+    PCICR  = (1<<PCIE2);
+#endif // __AVR_ATmega168__    
+
+
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168PA__)
+	DDRD &= ~(1<<PIND2);
+ 3cc:	52 98       	cbi	0x0a, 2	; 10
+	EIFR &= ~(1<<INTF0);				// clear flag
+	EIMSK = (1<<INT0);					// enable interrupt
+*/
+#endif
+    // Initialize spi module
+    spi_init();
+ 3ce:	0e 94 b4 02 	call	0x568	; 0x568 <spi_init>
+ 3d2:	08 95       	ret
+
+000003d4 <mirf_data_ready>:
+}
+
+extern uint8_t mirf_data_ready() 
+// Checks if data is available for reading
+{
+    if (PTX) return 0;
+ 3d4:	80 91 1e 02 	lds	r24, 0x021E
+ 3d8:	81 11       	cpse	r24, r1
+ 3da:	07 c0       	rjmp	.+14     	; 0x3ea <mirf_data_ready+0x16>
+    uint8_t status;
+    // Read MiRF status 
+    mirf_CSN_lo;                                // Pull down chip select
+ 3dc:	29 98       	cbi	0x05, 1	; 5
+    status = spi_fast_shift(NOP);               // Read status register
+ 3de:	8f ef       	ldi	r24, 0xFF	; 255
+ 3e0:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    mirf_CSN_hi;                                // Pull up chip select
+ 3e4:	29 9a       	sbi	0x05, 1	; 5
+    return status & (1<<RX_DR);
+ 3e6:	80 74       	andi	r24, 0x40	; 64
+ 3e8:	08 95       	ret
+}
+
+extern uint8_t mirf_data_ready() 
+// Checks if data is available for reading
+{
+    if (PTX) return 0;
+ 3ea:	80 e0       	ldi	r24, 0x00	; 0
+    // Read MiRF status 
+    mirf_CSN_lo;                                // Pull down chip select
+    status = spi_fast_shift(NOP);               // Read status register
+    mirf_CSN_hi;                                // Pull up chip select
+    return status & (1<<RX_DR);
+}
+ 3ec:	08 95       	ret
+
+000003ee <mirf_config_register>:
+    mirf_config_register(STATUS,(1<<RX_DR));   // Reset status register
+}
+
+void mirf_config_register(uint8_t reg, uint8_t value)
+// Clocks only one byte into the given MiRF register
+{
+ 3ee:	cf 93       	push	r28
+ 3f0:	c6 2f       	mov	r28, r22
+    mirf_CSN_lo;
+ 3f2:	29 98       	cbi	0x05, 1	; 5
+    spi_fast_shift(W_REGISTER | (REGISTER_MASK & reg));
+ 3f4:	8f 71       	andi	r24, 0x1F	; 31
+ 3f6:	80 62       	ori	r24, 0x20	; 32
+ 3f8:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    spi_fast_shift(value);
+ 3fc:	8c 2f       	mov	r24, r28
+ 3fe:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    mirf_CSN_hi;
+ 402:	29 9a       	sbi	0x05, 1	; 5
+}
+ 404:	cf 91       	pop	r28
+ 406:	08 95       	ret
+
+00000408 <mirf_config>:
+void mirf_config() 
+// Sets the important registers in the MiRF module and powers the module
+// in receiving mode
+{
+    // Set RF channel
+    mirf_config_register(RF_CH,mirf_CH);
+ 408:	62 e0       	ldi	r22, 0x02	; 2
+ 40a:	85 e0       	ldi	r24, 0x05	; 5
+ 40c:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+
+    // Set length of incoming payload 
+    mirf_config_register(RX_PW_P0, mirf_PAYLOAD);
+ 410:	64 e1       	ldi	r22, 0x14	; 20
+ 412:	81 e1       	ldi	r24, 0x11	; 17
+ 414:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+
+    // Start receiver 
+    PTX = 0;        // Start in receiving mode
+ 418:	10 92 1e 02 	sts	0x021E, r1
+    RX_POWERUP;     // Power up in receiving mode
+ 41c:	6b e4       	ldi	r22, 0x4B	; 75
+ 41e:	80 e0       	ldi	r24, 0x00	; 0
+ 420:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+    mirf_CE_hi;     // Listening for pakets
+ 424:	28 9a       	sbi	0x05, 0	; 5
+ 426:	08 95       	ret
+
+00000428 <__vector_5>:
+#endif // __AVR_ATmega168__ 
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168PA__)
+ISR(PCINT2_vect)
+#endif
+// Interrupt handler 
+{
+ 428:	1f 92       	push	r1
+ 42a:	0f 92       	push	r0
+ 42c:	0f b6       	in	r0, 0x3f	; 63
+ 42e:	0f 92       	push	r0
+ 430:	11 24       	eor	r1, r1
+ 432:	2f 93       	push	r18
+ 434:	3f 93       	push	r19
+ 436:	4f 93       	push	r20
+ 438:	5f 93       	push	r21
+ 43a:	6f 93       	push	r22
+ 43c:	7f 93       	push	r23
+ 43e:	8f 93       	push	r24
+ 440:	9f 93       	push	r25
+ 442:	af 93       	push	r26
+ 444:	bf 93       	push	r27
+ 446:	ef 93       	push	r30
+ 448:	ff 93       	push	r31
+    uint8_t status;   
+    // If still in transmitting mode then finish transmission
+    if (PTX) {
+ 44a:	80 91 1e 02 	lds	r24, 0x021E
+ 44e:	88 23       	and	r24, r24
+ 450:	89 f0       	breq	.+34     	; 0x474 <__vector_5+0x4c>
+    
+        // Read MiRF status 
+        mirf_CSN_lo;                                // Pull down chip select
+ 452:	29 98       	cbi	0x05, 1	; 5
+        status = spi_fast_shift(NOP);               // Read status register
+ 454:	8f ef       	ldi	r24, 0xFF	; 255
+ 456:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+        mirf_CSN_hi;                                // Pull up chip select
+ 45a:	29 9a       	sbi	0x05, 1	; 5
+
+        mirf_CE_lo;                             // Deactivate transreceiver
+ 45c:	28 98       	cbi	0x05, 0	; 5
+        RX_POWERUP;                             // Power up in receiving mode
+ 45e:	6b e4       	ldi	r22, 0x4B	; 75
+ 460:	80 e0       	ldi	r24, 0x00	; 0
+ 462:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+        mirf_CE_hi;                             // Listening for pakets
+ 466:	28 9a       	sbi	0x05, 0	; 5
+        PTX = 0;                                // Set to receiving mode
+ 468:	10 92 1e 02 	sts	0x021E, r1
+
+        // Reset status register for further interaction
+        mirf_config_register(STATUS,(1<<TX_DS)|(1<<MAX_RT)); // Reset status register
+ 46c:	60 e3       	ldi	r22, 0x30	; 48
+ 46e:	87 e0       	ldi	r24, 0x07	; 7
+ 470:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+    }
+}
+ 474:	ff 91       	pop	r31
+ 476:	ef 91       	pop	r30
+ 478:	bf 91       	pop	r27
+ 47a:	af 91       	pop	r26
+ 47c:	9f 91       	pop	r25
+ 47e:	8f 91       	pop	r24
+ 480:	7f 91       	pop	r23
+ 482:	6f 91       	pop	r22
+ 484:	5f 91       	pop	r21
+ 486:	4f 91       	pop	r20
+ 488:	3f 91       	pop	r19
+ 48a:	2f 91       	pop	r18
+ 48c:	0f 90       	pop	r0
+ 48e:	0f be       	out	0x3f, r0	; 63
+ 490:	0f 90       	pop	r0
+ 492:	1f 90       	pop	r1
+ 494:	18 95       	reti
+
+00000496 <mirf_poll_for_irq>:
+
+extern void mirf_poll_for_irq(void)
+{    
+	uint8_t status;   
+    // If still in transmitting mode then finish transmission
+    if (PTX) {
+ 496:	80 91 1e 02 	lds	r24, 0x021E
+ 49a:	88 23       	and	r24, r24
+ 49c:	89 f0       	breq	.+34     	; 0x4c0 <mirf_poll_for_irq+0x2a>
+    
+        // Read MiRF status 
+        mirf_CSN_lo;                                // Pull down chip select
+ 49e:	29 98       	cbi	0x05, 1	; 5
+        status = spi_fast_shift(NOP);               // Read status register
+ 4a0:	8f ef       	ldi	r24, 0xFF	; 255
+ 4a2:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+        mirf_CSN_hi;                                // Pull up chip select
+ 4a6:	29 9a       	sbi	0x05, 1	; 5
+
+        mirf_CE_lo;                             // Deactivate transreceiver
+ 4a8:	28 98       	cbi	0x05, 0	; 5
+        RX_POWERUP;                             // Power up in receiving mode
+ 4aa:	6b e4       	ldi	r22, 0x4B	; 75
+ 4ac:	80 e0       	ldi	r24, 0x00	; 0
+ 4ae:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+        mirf_CE_hi;                             // Listening for pakets
+ 4b2:	28 9a       	sbi	0x05, 0	; 5
+        PTX = 0;                                // Set to receiving mode
+ 4b4:	10 92 1e 02 	sts	0x021E, r1
+
+        // Reset status register for further interaction
+        mirf_config_register(STATUS,(1<<TX_DS)|(1<<MAX_RT)); // Reset status register
+ 4b8:	60 e3       	ldi	r22, 0x30	; 48
+ 4ba:	87 e0       	ldi	r24, 0x07	; 7
+ 4bc:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+ 4c0:	08 95       	ret
+
+000004c2 <mirf_get_data>:
+    return status & (1<<RX_DR);
+}
+
+extern void mirf_get_data(uint8_t * data) 
+// Reads mirf_PAYLOAD bytes into data array
+{
+ 4c2:	cf 93       	push	r28
+ 4c4:	df 93       	push	r29
+ 4c6:	ec 01       	movw	r28, r24
+    mirf_CSN_lo;                               // Pull down chip select
+ 4c8:	29 98       	cbi	0x05, 1	; 5
+    spi_fast_shift( R_RX_PAYLOAD );            // Send cmd to read rx payload
+ 4ca:	81 e6       	ldi	r24, 0x61	; 97
+ 4cc:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    spi_transfer_sync(data,data,mirf_PAYLOAD); // Read payload
+ 4d0:	44 e1       	ldi	r20, 0x14	; 20
+ 4d2:	be 01       	movw	r22, r28
+ 4d4:	ce 01       	movw	r24, r28
+ 4d6:	0e 94 bf 02 	call	0x57e	; 0x57e <spi_transfer_sync>
+    mirf_CSN_hi;                               // Pull up chip select
+ 4da:	29 9a       	sbi	0x05, 1	; 5
+    mirf_config_register(STATUS,(1<<RX_DR));   // Reset status register
+ 4dc:	60 e4       	ldi	r22, 0x40	; 64
+ 4de:	87 e0       	ldi	r24, 0x07	; 7
+ 4e0:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+}
+ 4e4:	df 91       	pop	r29
+ 4e6:	cf 91       	pop	r28
+ 4e8:	08 95       	ret
+
+000004ea <mirf_read_register>:
+    mirf_CSN_hi;
+}
+
+void mirf_read_register(uint8_t reg, uint8_t * value, uint8_t len)
+// Reads an array of bytes from the given start position in the MiRF registers.
+{
+ 4ea:	1f 93       	push	r17
+ 4ec:	cf 93       	push	r28
+ 4ee:	df 93       	push	r29
+ 4f0:	eb 01       	movw	r28, r22
+ 4f2:	14 2f       	mov	r17, r20
+    mirf_CSN_lo;
+ 4f4:	29 98       	cbi	0x05, 1	; 5
+    spi_fast_shift(R_REGISTER | (REGISTER_MASK & reg));
+ 4f6:	8f 71       	andi	r24, 0x1F	; 31
+ 4f8:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    spi_transfer_sync(value,value,len);
+ 4fc:	41 2f       	mov	r20, r17
+ 4fe:	be 01       	movw	r22, r28
+ 500:	ce 01       	movw	r24, r28
+ 502:	0e 94 bf 02 	call	0x57e	; 0x57e <spi_transfer_sync>
+    mirf_CSN_hi;
+ 506:	29 9a       	sbi	0x05, 1	; 5
+}
+ 508:	df 91       	pop	r29
+ 50a:	cf 91       	pop	r28
+ 50c:	1f 91       	pop	r17
+ 50e:	08 95       	ret
+
+00000510 <mirf_send>:
+
+
+void mirf_send(uint8_t * value, uint8_t len) 
+// Sends a data package to the default address. Be sure to send the correct
+// amount of bytes as configured as payload on the receiver.
+{
+ 510:	1f 93       	push	r17
+ 512:	cf 93       	push	r28
+ 514:	df 93       	push	r29
+ 516:	ec 01       	movw	r28, r24
+ 518:	16 2f       	mov	r17, r22
+    while (PTX) {}                  // Wait until last paket is send
+ 51a:	80 91 1e 02 	lds	r24, 0x021E
+ 51e:	81 11       	cpse	r24, r1
+ 520:	fc cf       	rjmp	.-8      	; 0x51a <mirf_send+0xa>
+
+    mirf_CE_lo;
+ 522:	28 98       	cbi	0x05, 0	; 5
+
+    PTX = 1;                        // Set to transmitter mode
+ 524:	81 e0       	ldi	r24, 0x01	; 1
+ 526:	80 93 1e 02 	sts	0x021E, r24
+    TX_POWERUP;                     // Power up
+ 52a:	6a e4       	ldi	r22, 0x4A	; 74
+ 52c:	80 e0       	ldi	r24, 0x00	; 0
+ 52e:	0e 94 f7 01 	call	0x3ee	; 0x3ee <mirf_config_register>
+    
+    mirf_CSN_lo;                    // Pull down chip select
+ 532:	29 98       	cbi	0x05, 1	; 5
+    spi_fast_shift( FLUSH_TX );     // Write cmd to flush tx fifo
+ 534:	81 ee       	ldi	r24, 0xE1	; 225
+ 536:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    mirf_CSN_hi;                    // Pull up chip select
+ 53a:	29 9a       	sbi	0x05, 1	; 5
+    
+    mirf_CSN_lo;                    // Pull down chip select
+ 53c:	29 98       	cbi	0x05, 1	; 5
+    spi_fast_shift( W_TX_PAYLOAD ); // Write cmd to write payload
+ 53e:	80 ea       	ldi	r24, 0xA0	; 160
+ 540:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <spi_fast_shift>
+    spi_transmit_sync(value,len);   // Write payload
+ 544:	61 2f       	mov	r22, r17
+ 546:	ce 01       	movw	r24, r28
+ 548:	0e 94 d2 02 	call	0x5a4	; 0x5a4 <spi_transmit_sync>
+    mirf_CSN_hi;                    // Pull up chip select
+ 54c:	29 9a       	sbi	0x05, 1	; 5
+    
+    mirf_CE_hi;                     // Start transmission
+ 54e:	28 9a       	sbi	0x05, 0	; 5
+}
+ 550:	df 91       	pop	r29
+ 552:	cf 91       	pop	r28
+ 554:	1f 91       	pop	r17
+ 556:	08 95       	ret
+
+00000558 <Port_init>:
+		//		 |||-------->	P5: (I) not used (ADC5)
+		//		 ||--------->	P6: (I) not used (ADC6)
+		//		 |---------->	P7: (I) not used (ADC7)
+	#endif
+	// Port B
+	PORTB = 0b00000000;
+ 558:	15 b8       	out	0x05, r1	; 5
+	//		  |||||------>	P3:
+	//		  ||||------->	P4:
+	//		  |||-------->	P5:
+	//		  ||--------->	P6:
+	//		  |---------->	P7:
+	DDRB = 0b00000000;
+ 55a:	14 b8       	out	0x04, r1	; 4
+	//		 ||--------->	P6: (I) not used (MISO)
+	//		 |---------->	P7: (I) not used (SCK)
+
+		
+	// Port C
+	PORTC = 0b00000000;
+ 55c:	18 b8       	out	0x08, r1	; 8
+	//		  |||||------>	P3:
+	//		  ||||------->	P4:
+	//		  |||-------->	P5:
+	//		  ||--------->	P6:
+	//		  |---------->	P7:
+	DDRC = 0b00000000;
+ 55e:	17 b8       	out	0x07, r1	; 7
+	//		 |||-------->	P5: (I) not used	(JTAG_TDI)
+	//		 ||--------->	P6: (I) not used	(TOSC1)
+	//		 |---------->	P7: (I) not used	(TOSC2)
+	
+	// Port D
+	PORTD = 0b00000000;
+ 560:	1b b8       	out	0x0b, r1	; 11
+	//		  |||||------>	P3:
+	//		  ||||------->	P4:
+	//		  |||-------->	P5:
+	//		  ||--------->	P6: 
+	//		  |---------->	P7: 
+	DDRD = 0b11100010;
+ 562:	82 ee       	ldi	r24, 0xE2	; 226
+ 564:	8a b9       	out	0x0a, r24	; 10
+ 566:	08 95       	ret
+
+00000568 <spi_init>:
+
+
+void spi_init()
+// Initialize pins for spi communication
+{
+    DDR_SPI &= ~((1<<DD_MOSI)|(1<<DD_MISO)|(1<<DD_SS)|(1<<DD_SCK));
+ 568:	84 b1       	in	r24, 0x04	; 4
+ 56a:	83 7c       	andi	r24, 0xC3	; 195
+ 56c:	84 b9       	out	0x04, r24	; 4
+    // Define the following pins as output
+    DDR_SPI |= ((1<<DD_MOSI)|(1<<DD_SS)|(1<<DD_SCK));
+ 56e:	84 b1       	in	r24, 0x04	; 4
+ 570:	8c 62       	ori	r24, 0x2C	; 44
+ 572:	84 b9       	out	0x04, r24	; 4
+
+    
+    SPCR = ((1<<SPE)|               // SPI Enable
+ 574:	81 e5       	ldi	r24, 0x51	; 81
+ 576:	8c bd       	out	0x2c, r24	; 44
+            (1<<MSTR)|              // Master/Slave select   
+            (0<<SPR1)|(1<<SPR0)|    // SPI Clock Rate
+            (0<<CPOL)|              // Clock Polarity (0:SCK low / 1:SCK hi when idle)
+            (0<<CPHA));             // Clock Phase (0:leading / 1:trailing edge sampling)
+
+    SPSR = (1<<SPI2X);              // Double Clock Rate
+ 578:	81 e0       	ldi	r24, 0x01	; 1
+ 57a:	8d bd       	out	0x2d, r24	; 45
+ 57c:	08 95       	ret
+
+0000057e <spi_transfer_sync>:
+
+void spi_transfer_sync (uint8_t * dataout, uint8_t * datain, uint8_t len)
+// Shift full array through target device
+{
+       uint8_t i;      
+       for (i = 0; i < len; i++) {
+ 57e:	44 23       	and	r20, r20
+ 580:	81 f0       	breq	.+32     	; 0x5a2 <spi_transfer_sync+0x24>
+ 582:	28 2f       	mov	r18, r24
+ 584:	a6 2f       	mov	r26, r22
+ 586:	b7 2f       	mov	r27, r23
+ 588:	e8 2f       	mov	r30, r24
+ 58a:	f9 2f       	mov	r31, r25
+             SPDR = dataout[i];
+ 58c:	81 91       	ld	r24, Z+
+ 58e:	8e bd       	out	0x2e, r24	; 46
+             while((SPSR & (1<<SPIF))==0);
+ 590:	0d b4       	in	r0, 0x2d	; 45
+ 592:	07 fe       	sbrs	r0, 7
+ 594:	fd cf       	rjmp	.-6      	; 0x590 <spi_transfer_sync+0x12>
+             datain[i] = SPDR;
+ 596:	8e b5       	in	r24, 0x2e	; 46
+ 598:	8d 93       	st	X+, r24
+ 59a:	8e 2f       	mov	r24, r30
+ 59c:	82 1b       	sub	r24, r18
+
+void spi_transfer_sync (uint8_t * dataout, uint8_t * datain, uint8_t len)
+// Shift full array through target device
+{
+       uint8_t i;      
+       for (i = 0; i < len; i++) {
+ 59e:	84 17       	cp	r24, r20
+ 5a0:	a8 f3       	brcs	.-22     	; 0x58c <spi_transfer_sync+0xe>
+ 5a2:	08 95       	ret
+
+000005a4 <spi_transmit_sync>:
+
+void spi_transmit_sync (uint8_t * dataout, uint8_t len)
+// Shift full array to target device without receiving any byte
+{
+       uint8_t i;      
+       for (i = 0; i < len; i++) {
+ 5a4:	66 23       	and	r22, r22
+ 5a6:	61 f0       	breq	.+24     	; 0x5c0 <spi_transmit_sync+0x1c>
+ 5a8:	28 2f       	mov	r18, r24
+ 5aa:	e8 2f       	mov	r30, r24
+ 5ac:	f9 2f       	mov	r31, r25
+             SPDR = dataout[i];
+ 5ae:	81 91       	ld	r24, Z+
+ 5b0:	8e bd       	out	0x2e, r24	; 46
+             while((SPSR & (1<<SPIF))==0);
+ 5b2:	0d b4       	in	r0, 0x2d	; 45
+ 5b4:	07 fe       	sbrs	r0, 7
+ 5b6:	fd cf       	rjmp	.-6      	; 0x5b2 <spi_transmit_sync+0xe>
+ 5b8:	8e 2f       	mov	r24, r30
+ 5ba:	82 1b       	sub	r24, r18
+
+void spi_transmit_sync (uint8_t * dataout, uint8_t len)
+// Shift full array to target device without receiving any byte
+{
+       uint8_t i;      
+       for (i = 0; i < len; i++) {
+ 5bc:	86 17       	cp	r24, r22
+ 5be:	b8 f3       	brcs	.-18     	; 0x5ae <spi_transmit_sync+0xa>
+ 5c0:	08 95       	ret
+
+000005c2 <spi_fast_shift>:
+}
+
+uint8_t spi_fast_shift (uint8_t data)
+// Clocks only one byte to target device and returns the received one
+{
+    SPDR = data;
+ 5c2:	8e bd       	out	0x2e, r24	; 46
+    while((SPSR & (1<<SPIF))==0);
+ 5c4:	0d b4       	in	r0, 0x2d	; 45
+ 5c6:	07 fe       	sbrs	r0, 7
+ 5c8:	fd cf       	rjmp	.-6      	; 0x5c4 <spi_fast_shift+0x2>
+    return SPDR;
+ 5ca:	8e b5       	in	r24, 0x2e	; 46
+}
+ 5cc:	08 95       	ret
+
+000005ce <UART_init>:
+		8-N-1
+		Baud rate defined in header file
+	*/
+	/*#if defined(__AVR_ATmega328P__) || defined(_AVR_ATmega88__)*/
+	#if defined(_AVR_IOM88_H_) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega328P__)
+		UCSR0B = (0<<RXCIE0) | (0<<TXCIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02);			
+ 5ce:	88 e1       	ldi	r24, 0x18	; 24
+ 5d0:	80 93 c1 00 	sts	0x00C1, r24
+		//UCSR0B = (0<<RXCIE0) | (0<<TXCIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02);			
+		UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
+ 5d4:	86 e0       	ldi	r24, 0x06	; 6
+ 5d6:	80 93 c2 00 	sts	0x00C2, r24
+		UBRR0H = UBRRH_VALUE;
+ 5da:	10 92 c5 00 	sts	0x00C5, r1
+		UBRR0L = UBRRL_VALUE;
+ 5de:	82 e2       	ldi	r24, 0x22	; 34
+ 5e0:	80 93 c4 00 	sts	0x00C4, r24
+		#if USE_2X
+			UCSR0A |= (1<<U2X0);
+ 5e4:	e0 ec       	ldi	r30, 0xC0	; 192
+ 5e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 5e8:	80 81       	ld	r24, Z
+ 5ea:	82 60       	ori	r24, 0x02	; 2
+ 5ec:	80 83       	st	Z, r24
+ 5ee:	08 95       	ret
+
+000005f0 <UART_putc>:
+}
+
+void UART_putc(uint8_t u08Data)
+{
+	#if defined(__AVR_ATmega328P__) || defined(_AVR_IOM88_H_) || defined(__AVR_ATmega168PA__)
+	    while(!(UCSR0A & (1<<UDRE0)));
+ 5f0:	e0 ec       	ldi	r30, 0xC0	; 192
+ 5f2:	f0 e0       	ldi	r31, 0x00	; 0
+ 5f4:	90 81       	ld	r25, Z
+ 5f6:	95 ff       	sbrs	r25, 5
+ 5f8:	fd cf       	rjmp	.-6      	; 0x5f4 <UART_putc+0x4>
+		UDR0 = u08Data;
+ 5fa:	80 93 c6 00 	sts	0x00C6, r24
+ 5fe:	08 95       	ret
+
+00000600 <UART_puts>:
+		UDR = u08Data;
+	#endif
+}
+
+void UART_puts(char * pu08Data)
+{
+ 600:	cf 93       	push	r28
+ 602:	df 93       	push	r29
+ 604:	ec 01       	movw	r28, r24
+	while(*pu08Data){
+ 606:	88 81       	ld	r24, Y
+ 608:	88 23       	and	r24, r24
+ 60a:	31 f0       	breq	.+12     	; 0x618 <UART_puts+0x18>
+ 60c:	21 96       	adiw	r28, 0x01	; 1
+		UART_putc(*pu08Data++);
+ 60e:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+	#endif
+}
+
+void UART_puts(char * pu08Data)
+{
+	while(*pu08Data){
+ 612:	89 91       	ld	r24, Y+
+ 614:	81 11       	cpse	r24, r1
+ 616:	fb cf       	rjmp	.-10     	; 0x60e <UART_puts+0xe>
+		UART_putc(*pu08Data++);
+	}
+}
+ 618:	df 91       	pop	r29
+ 61a:	cf 91       	pop	r28
+ 61c:	08 95       	ret
+
+0000061e <UART_Tx_uint08>:
+
+void UART_Tx_uint08(uint8_t u08Send)
+{
+ 61e:	1f 93       	push	r17
+ 620:	cf 93       	push	r28
+ 622:	df 93       	push	r29
+ 624:	cd b7       	in	r28, 0x3d	; 61
+ 626:	de b7       	in	r29, 0x3e	; 62
+ 628:	2a 97       	sbiw	r28, 0x0a	; 10
+ 62a:	0f b6       	in	r0, 0x3f	; 63
+ 62c:	f8 94       	cli
+ 62e:	de bf       	out	0x3e, r29	; 62
+ 630:	0f be       	out	0x3f, r0	; 63
+ 632:	cd bf       	out	0x3d, r28	; 61
+    uint8_t au08charBuffer[10];
+    uint8_t u08temp,u08number;
+
+    u08number = u08Send;
+    u08ptr = 10;
+    if (u08number==0){
+ 634:	81 11       	cpse	r24, r1
+ 636:	04 c0       	rjmp	.+8      	; 0x640 <UART_Tx_uint08+0x22>
+    	UART_putc('0');
+ 638:	80 e3       	ldi	r24, 0x30	; 48
+ 63a:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 63e:	56 c0       	rjmp	.+172    	; 0x6ec <UART_Tx_uint08+0xce>
+    uint8_t au08charBuffer[10];
+    uint8_t u08temp,u08number;
+
+    u08number = u08Send;
+    u08ptr = 10;
+    if (u08number==0){
+ 640:	1a e0       	ldi	r17, 0x0A	; 10
+    	UART_putc('0');
+    }else{
+		while (u08number != 0){
+			u08ptr--;
+			u08temp = u08number % 10;
+ 642:	4d ec       	ldi	r20, 0xCD	; 205
+    u08ptr = 10;
+    if (u08number==0){
+    	UART_putc('0');
+    }else{
+		while (u08number != 0){
+			u08ptr--;
+ 644:	11 50       	subi	r17, 0x01	; 1
+			u08temp = u08number % 10;
+			au08charBuffer[u08ptr] = u08temp;
+ 646:	e1 e0       	ldi	r30, 0x01	; 1
+ 648:	f0 e0       	ldi	r31, 0x00	; 0
+ 64a:	ec 0f       	add	r30, r28
+ 64c:	fd 1f       	adc	r31, r29
+ 64e:	e1 0f       	add	r30, r17
+ 650:	f1 1d       	adc	r31, r1
+    if (u08number==0){
+    	UART_putc('0');
+    }else{
+		while (u08number != 0){
+			u08ptr--;
+			u08temp = u08number % 10;
+ 652:	84 9f       	mul	r24, r20
+ 654:	91 2d       	mov	r25, r1
+ 656:	11 24       	eor	r1, r1
+ 658:	96 95       	lsr	r25
+ 65a:	96 95       	lsr	r25
+ 65c:	96 95       	lsr	r25
+ 65e:	29 2f       	mov	r18, r25
+ 660:	22 0f       	add	r18, r18
+ 662:	32 2f       	mov	r19, r18
+ 664:	33 0f       	add	r19, r19
+ 666:	33 0f       	add	r19, r19
+ 668:	23 0f       	add	r18, r19
+ 66a:	82 1b       	sub	r24, r18
+			au08charBuffer[u08ptr] = u08temp;
+ 66c:	80 83       	st	Z, r24
+			u08number = u08number / 10;
+ 66e:	89 2f       	mov	r24, r25
+    u08number = u08Send;
+    u08ptr = 10;
+    if (u08number==0){
+    	UART_putc('0');
+    }else{
+		while (u08number != 0){
+ 670:	91 11       	cpse	r25, r1
+ 672:	e8 cf       	rjmp	.-48     	; 0x644 <UART_Tx_uint08+0x26>
+			u08temp = u08number % 10;
+			au08charBuffer[u08ptr] = u08temp;
+			u08number = u08number / 10;
+		}
+
+		for(u08i = u08ptr;u08i<10 ;u08i++){
+ 674:	1a 30       	cpi	r17, 0x0A	; 10
+ 676:	d0 f5       	brcc	.+116    	; 0x6ec <UART_Tx_uint08+0xce>
+			switch(au08charBuffer[u08i]){
+ 678:	e1 e0       	ldi	r30, 0x01	; 1
+ 67a:	f0 e0       	ldi	r31, 0x00	; 0
+ 67c:	ec 0f       	add	r30, r28
+ 67e:	fd 1f       	adc	r31, r29
+ 680:	e1 0f       	add	r30, r17
+ 682:	f1 1d       	adc	r31, r1
+ 684:	80 81       	ld	r24, Z
+ 686:	90 e0       	ldi	r25, 0x00	; 0
+ 688:	8a 30       	cpi	r24, 0x0A	; 10
+ 68a:	91 05       	cpc	r25, r1
+ 68c:	60 f5       	brcc	.+88     	; 0x6e6 <UART_Tx_uint08+0xc8>
+ 68e:	fc 01       	movw	r30, r24
+ 690:	ec 5c       	subi	r30, 0xCC	; 204
+ 692:	ff 4f       	sbci	r31, 0xFF	; 255
+ 694:	0c 94 8b 03 	jmp	0x716	; 0x716 <__tablejump2__>
+				case 0: UART_putc('0');break;
+ 698:	80 e3       	ldi	r24, 0x30	; 48
+ 69a:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 69e:	23 c0       	rjmp	.+70     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 1: UART_putc('1');break;
+ 6a0:	81 e3       	ldi	r24, 0x31	; 49
+ 6a2:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6a6:	1f c0       	rjmp	.+62     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 2: UART_putc('2');break;
+ 6a8:	82 e3       	ldi	r24, 0x32	; 50
+ 6aa:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6ae:	1b c0       	rjmp	.+54     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 3: UART_putc('3');break;
+ 6b0:	83 e3       	ldi	r24, 0x33	; 51
+ 6b2:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6b6:	17 c0       	rjmp	.+46     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 4: UART_putc('4');break;
+ 6b8:	84 e3       	ldi	r24, 0x34	; 52
+ 6ba:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6be:	13 c0       	rjmp	.+38     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 5: UART_putc('5');break;
+ 6c0:	85 e3       	ldi	r24, 0x35	; 53
+ 6c2:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6c6:	0f c0       	rjmp	.+30     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 6: UART_putc('6');break;
+ 6c8:	86 e3       	ldi	r24, 0x36	; 54
+ 6ca:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6ce:	0b c0       	rjmp	.+22     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 7: UART_putc('7');break;
+ 6d0:	87 e3       	ldi	r24, 0x37	; 55
+ 6d2:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6d6:	07 c0       	rjmp	.+14     	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 8: UART_putc('8');break;
+ 6d8:	88 e3       	ldi	r24, 0x38	; 56
+ 6da:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+ 6de:	03 c0       	rjmp	.+6      	; 0x6e6 <UART_Tx_uint08+0xc8>
+				case 9: UART_putc('9');break;
+ 6e0:	89 e3       	ldi	r24, 0x39	; 57
+ 6e2:	0e 94 f8 02 	call	0x5f0	; 0x5f0 <UART_putc>
+			u08temp = u08number % 10;
+			au08charBuffer[u08ptr] = u08temp;
+			u08number = u08number / 10;
+		}
+
+		for(u08i = u08ptr;u08i<10 ;u08i++){
+ 6e6:	1f 5f       	subi	r17, 0xFF	; 255
+ 6e8:	1a 30       	cpi	r17, 0x0A	; 10
+ 6ea:	31 f6       	brne	.-116    	; 0x678 <UART_Tx_uint08+0x5a>
+				case 8: UART_putc('8');break;
+				case 9: UART_putc('9');break;
+			}
+		}
+    }
+}
+ 6ec:	2a 96       	adiw	r28, 0x0a	; 10
+ 6ee:	0f b6       	in	r0, 0x3f	; 63
+ 6f0:	f8 94       	cli
+ 6f2:	de bf       	out	0x3e, r29	; 62
+ 6f4:	0f be       	out	0x3f, r0	; 63
+ 6f6:	cd bf       	out	0x3d, r28	; 61
+ 6f8:	df 91       	pop	r29
+ 6fa:	cf 91       	pop	r28
+ 6fc:	1f 91       	pop	r17
+ 6fe:	08 95       	ret
+
+00000700 <UART_Rx>:
+uint16_t UART_Rx(void)
+{	
+	uint16_t u16RetVal = 0xFFFF;
+	/* Received data present? */
+#if defined(__AVR_ATmega328P__) || defined(_AVR_IOM88_H_) || defined(__AVR_ATmega168PA__)
+	if(UCSR0A & (1<<RXC0))
+ 700:	80 91 c0 00 	lds	r24, 0x00C0
+ 704:	88 23       	and	r24, r24
+ 706:	24 f4       	brge	.+8      	; 0x710 <UART_Rx+0x10>
+	{
+		/* Get received data from buffer */
+		u16RetVal = (uint16_t)UDR0;
+ 708:	80 91 c6 00 	lds	r24, 0x00C6
+ 70c:	90 e0       	ldi	r25, 0x00	; 0
+ 70e:	08 95       	ret
+    }
+}
+
+uint16_t UART_Rx(void)
+{	
+	uint16_t u16RetVal = 0xFFFF;
+ 710:	8f ef       	ldi	r24, 0xFF	; 255
+ 712:	9f ef       	ldi	r25, 0xFF	; 255
+		u16RetVal = (uint16_t)UDR;
+	}
+#endif	
+	
+	return u16RetVal;
+}
+ 714:	08 95       	ret
+
+00000716 <__tablejump2__>:
+ 716:	ee 0f       	add	r30, r30
+ 718:	ff 1f       	adc	r31, r31
+
+0000071a <__tablejump__>:
+ 71a:	05 90       	lpm	r0, Z+
+ 71c:	f4 91       	lpm	r31, Z
+ 71e:	e0 2d       	mov	r30, r0
+ 720:	09 94       	ijmp
+
+00000722 <_exit>:
+ 722:	f8 94       	cli
+
+00000724 <__stop_program>:
+ 724:	ff cf       	rjmp	.-2      	; 0x724 <__stop_program>

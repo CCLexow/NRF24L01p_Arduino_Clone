@@ -13,7 +13,7 @@ void UART_init(void)
 		Baud rate defined in header file
 	*/
 	/*#if defined(__AVR_ATmega328P__) || defined(_AVR_ATmega88__)*/
-	#if defined(_AVR_IOM88_H_) || defined(__AVR_ATmega168PA__)
+	#if defined(_AVR_IOM88_H_) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega328P__)
 		UCSR0B = (0<<RXCIE0) | (0<<TXCIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02);			
 		//UCSR0B = (0<<RXCIE0) | (0<<TXCIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02);			
 		UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);

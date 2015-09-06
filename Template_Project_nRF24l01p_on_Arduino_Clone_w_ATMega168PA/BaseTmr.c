@@ -7,6 +7,8 @@
 #include "BaseTmr.h"
 #include <avr/io.h>
 
+uint32_t BaseTmr_u32TimerTicks;
+
 //inits timer 0 to create 10ms time base
 void BaseTmr_Init(void)
 {
@@ -48,7 +50,11 @@ void BaseTmr_Init(void)
 		TCNT = 0;	
 				
 	#endif
+	
+	// clear timer ticks
+	BaseTmr_u32TimerTicks=0;
 }
+
 
 
 void BaseTmr_WaitForNextTimeSlot_10ms(void)
@@ -68,4 +74,11 @@ void BaseTmr_WaitForNextTimeSlot_10ms(void)
 		#endif
 		
 	}
+	// add 10ms
+	BaseTmr_u32TimerTicks+=10;
+}
+
+uint32_t BaseTmr_u32GetTimerTicks(void)
+{
+	return BaseTmr_u32TimerTicks;
 }
